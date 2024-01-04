@@ -2,10 +2,15 @@
 {
     internal struct MatrixIndex : IData
     {
-        #region 属性
-        public int Row {  get; set; }
+        #region 字段
+        private int row;
+        private int column;
+        #endregion
 
-        public int Column {  get; set; }
+        #region 属性
+        public int Row { get => row; set => row = value; }
+
+        public int Column { get => column; set => column = value; }
         #endregion
 
         #region 构造函数
@@ -13,13 +18,13 @@
 
         public MatrixIndex(int row, int column)
         {
-            Row = row;
-            Column = column;
+            this.row = row;
+            this.column = column;
         }
         #endregion
 
         #region 方法
-        public static MatrixIndex operator +(MatrixIndex index, (int row, int column) offset)
+        public static MatrixIndex operator +(MatrixIndex index, MatrixIndex offset)
             => new(index.Row + offset.row, index.Column + offset.column);
         public static implicit operator MatrixIndex((int row, int column) index) => new(index.row, index.column);
         #endregion

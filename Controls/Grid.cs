@@ -5,12 +5,16 @@ namespace MineSweeper.Controls
 {
     internal class Grid : BasicGrid
     {
+        #region 字段
+        private MatrixIndex index;
+        #endregion
+
         #region 属性
-        public MatrixIndex Index { get; set; }
+        public MatrixIndex Index { get => index; set => index = value; }
 
-        public int Row => Index.Row;
+        public int Row => index.Row;
 
-        public int Column => Index.Column;
+        public int Column => index.Column;
 
         public Plane Plane => Parent as Plane;
 

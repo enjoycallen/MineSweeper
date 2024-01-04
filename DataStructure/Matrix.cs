@@ -5,12 +5,12 @@ namespace MineSweeper.DataStructure
     internal class Matrix<T>(MatrixSize size) : IEnumerable<T>
     {
         #region 字段
-        
+        private MatrixSize size = size;
         private T[,] matrix = new T[size.Row, size.Column];
         #endregion
 
         #region 属性
-        public MatrixSize Size = size;
+        public MatrixSize Size => size;
 
         public int Row => size.Row;
 
@@ -20,24 +20,24 @@ namespace MineSweeper.DataStructure
         #region 索引器
         public T this[int row, int column]
         {
-            get => size.ValidIndex(row, column) ? matrix[row, column] : default;
-            set
-            {
-                if (size.ValidIndex(row, column)) matrix[row, column] = value;
-            }
+            get => this[(row, column)];
+            set => this[(row, column)] = value;
         }
 
         public T this[MatrixIndex index]
         {
-            get => this[index.Row, index.Column];
-            set => this[index.Row, index.Column] = value;
+            get => size.ValidIndex(index) ? matrix[index.Row, index.Column] : default;
+            set
+            {
+                if (size.ValidIndex(index)) matrix[index.Row, index.Column] = value;
+            }
         }
         #endregion
 
         #region 方法
         public IEnumerable<T> Neighbour(MatrixIndex index)
         {
-            (int, int)[] Offset = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)];
+            MatrixIndex[] Offset = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)];
             foreach (var offset in Offset)
             {
                 if (size.ValidIndex(index + offset))

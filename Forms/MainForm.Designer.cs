@@ -1,4 +1,4 @@
-﻿namespace MineSweeper
+﻿namespace MineSweeper.Forms
 {
     partial class MainForm
     {
@@ -30,23 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             TopMenu = new MenuStrip();
-            游戏GToolStripMenuItem = new ToolStripMenuItem();
-            新游戏NToolStripMenuItem = new ToolStripMenuItem();
+            游戏ToolStripMenuItem = new ToolStripMenuItem();
+            新游戏ToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripSeparator();
             统计信息ToolStripMenuItem = new ToolStripMenuItem();
-            选项OToolStripMenuItem = new ToolStripMenuItem();
+            选项ToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem3 = new ToolStripSeparator();
-            退出XToolStripMenuItem = new ToolStripMenuItem();
-            帮助HToolStripMenuItem = new ToolStripMenuItem();
+            退出ToolStripMenuItem = new ToolStripMenuItem();
+            帮助ToolStripMenuItem = new ToolStripMenuItem();
             查看帮助ToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem4 = new ToolStripSeparator();
-            关于AToolStripMenuItem = new ToolStripMenuItem();
+            关于ToolStripMenuItem = new ToolStripMenuItem();
             TopMenu.SuspendLayout();
             SuspendLayout();
             // 
             // TopMenu
             // 
-            TopMenu.Items.AddRange(new ToolStripItem[] { 游戏GToolStripMenuItem, 帮助HToolStripMenuItem });
+            TopMenu.Items.AddRange(new ToolStripItem[] { 游戏ToolStripMenuItem, 帮助ToolStripMenuItem });
             TopMenu.Location = new Point(0, 0);
             TopMenu.Name = "TopMenu";
             TopMenu.Padding = new Padding(7, 3, 0, 3);
@@ -54,20 +54,20 @@
             TopMenu.TabIndex = 1;
             TopMenu.Text = "menuStrip1";
             // 
-            // 游戏GToolStripMenuItem
+            // 游戏ToolStripMenuItem
             // 
-            游戏GToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 新游戏NToolStripMenuItem, toolStripMenuItem2, 统计信息ToolStripMenuItem, 选项OToolStripMenuItem, toolStripMenuItem3, 退出XToolStripMenuItem });
-            游戏GToolStripMenuItem.Name = "游戏GToolStripMenuItem";
-            游戏GToolStripMenuItem.Size = new Size(61, 21);
-            游戏GToolStripMenuItem.Text = "游戏(&G)";
+            游戏ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 新游戏ToolStripMenuItem, toolStripMenuItem2, 统计信息ToolStripMenuItem, 选项ToolStripMenuItem, toolStripMenuItem3, 退出ToolStripMenuItem });
+            游戏ToolStripMenuItem.Name = "游戏ToolStripMenuItem";
+            游戏ToolStripMenuItem.Size = new Size(61, 21);
+            游戏ToolStripMenuItem.Text = "游戏(&G)";
             // 
-            // 新游戏NToolStripMenuItem
+            // 新游戏ToolStripMenuItem
             // 
-            新游戏NToolStripMenuItem.Name = "新游戏NToolStripMenuItem";
-            新游戏NToolStripMenuItem.ShortcutKeys = Keys.F2;
-            新游戏NToolStripMenuItem.Size = new Size(160, 22);
-            新游戏NToolStripMenuItem.Text = "新游戏(&N)";
-            新游戏NToolStripMenuItem.Click += 新游戏NToolStripMenuItem_Click;
+            新游戏ToolStripMenuItem.Name = "新游戏ToolStripMenuItem";
+            新游戏ToolStripMenuItem.ShortcutKeys = Keys.F2;
+            新游戏ToolStripMenuItem.Size = new Size(160, 22);
+            新游戏ToolStripMenuItem.Text = "新游戏(&N)";
+            新游戏ToolStripMenuItem.Click += 新游戏ToolStripMenuItemClick;
             // 
             // toolStripMenuItem2
             // 
@@ -81,32 +81,33 @@
             统计信息ToolStripMenuItem.Size = new Size(160, 22);
             统计信息ToolStripMenuItem.Text = "统计信息(&S)";
             // 
-            // 选项OToolStripMenuItem
+            // 选项ToolStripMenuItem
             // 
-            选项OToolStripMenuItem.Name = "选项OToolStripMenuItem";
-            选项OToolStripMenuItem.ShortcutKeys = Keys.F5;
-            选项OToolStripMenuItem.Size = new Size(160, 22);
-            选项OToolStripMenuItem.Text = "选项(&O)";
+            选项ToolStripMenuItem.Name = "选项ToolStripMenuItem";
+            选项ToolStripMenuItem.ShortcutKeys = Keys.F5;
+            选项ToolStripMenuItem.Size = new Size(160, 22);
+            选项ToolStripMenuItem.Text = "选项(&O)";
+            选项ToolStripMenuItem.Click += 选项OToolStripMenuItem_Click;
             // 
             // toolStripMenuItem3
             // 
             toolStripMenuItem3.Name = "toolStripMenuItem3";
             toolStripMenuItem3.Size = new Size(157, 6);
             // 
-            // 退出XToolStripMenuItem
+            // 退出ToolStripMenuItem
             // 
-            退出XToolStripMenuItem.Name = "退出XToolStripMenuItem";
-            退出XToolStripMenuItem.ShortcutKeys = Keys.F7;
-            退出XToolStripMenuItem.Size = new Size(160, 22);
-            退出XToolStripMenuItem.Text = "退出(&X)";
-            退出XToolStripMenuItem.Click += 退出XToolStripMenuItem_Click;
+            退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
+            退出ToolStripMenuItem.ShortcutKeys = Keys.F7;
+            退出ToolStripMenuItem.Size = new Size(160, 22);
+            退出ToolStripMenuItem.Text = "退出(&X)";
+            退出ToolStripMenuItem.Click += 退出ToolStripMenuItemClick;
             // 
-            // 帮助HToolStripMenuItem
+            // 帮助ToolStripMenuItem
             // 
-            帮助HToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 查看帮助ToolStripMenuItem, toolStripMenuItem4, 关于AToolStripMenuItem });
-            帮助HToolStripMenuItem.Name = "帮助HToolStripMenuItem";
-            帮助HToolStripMenuItem.Size = new Size(61, 21);
-            帮助HToolStripMenuItem.Text = "帮助(&H)";
+            帮助ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { 查看帮助ToolStripMenuItem, toolStripMenuItem4, 关于ToolStripMenuItem });
+            帮助ToolStripMenuItem.Name = "帮助ToolStripMenuItem";
+            帮助ToolStripMenuItem.Size = new Size(61, 21);
+            帮助ToolStripMenuItem.Text = "帮助(&H)";
             // 
             // 查看帮助ToolStripMenuItem
             // 
@@ -114,19 +115,19 @@
             查看帮助ToolStripMenuItem.ShortcutKeys = Keys.F1;
             查看帮助ToolStripMenuItem.Size = new Size(161, 22);
             查看帮助ToolStripMenuItem.Text = "查看帮助(&V)";
-            查看帮助ToolStripMenuItem.Click += 查看帮助ToolStripMenuItem_Click;
+            查看帮助ToolStripMenuItem.Click += 查看帮助ToolStripMenuItemClick;
             // 
             // toolStripMenuItem4
             // 
             toolStripMenuItem4.Name = "toolStripMenuItem4";
             toolStripMenuItem4.Size = new Size(158, 6);
             // 
-            // 关于AToolStripMenuItem
+            // 关于ToolStripMenuItem
             // 
-            关于AToolStripMenuItem.Name = "关于AToolStripMenuItem";
-            关于AToolStripMenuItem.Size = new Size(161, 22);
-            关于AToolStripMenuItem.Text = "关于(&A)";
-            关于AToolStripMenuItem.Click += 关于AToolStripMenuItem_Click;
+            关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
+            关于ToolStripMenuItem.Size = new Size(161, 22);
+            关于ToolStripMenuItem.Text = "关于(&A)";
+            关于ToolStripMenuItem.Click += 关于AToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -142,7 +143,8 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "扫雷";
-            Load += mainForm_Load;
+            FormClosing += mainFormClosing;
+            Load += mainFormLoad;
             TopMenu.ResumeLayout(false);
             TopMenu.PerformLayout();
             ResumeLayout(false);
@@ -152,16 +154,16 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip TopMenu;
-        private System.Windows.Forms.ToolStripMenuItem 游戏GToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 新游戏NToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 游戏ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 新游戏ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem 统计信息ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 选项OToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 选项ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem 退出XToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 帮助HToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 查看帮助ToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem 关于AToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 关于ToolStripMenuItem;
     }
 }

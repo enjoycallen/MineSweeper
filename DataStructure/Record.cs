@@ -9,14 +9,7 @@
         #endregion
 
         #region 构造函数
-        public Record() => playerName = "";
-
-        public Record(string playerName,int time)
-        {
-            this.playerName= playerName;
-            this.time = time;
-            date = DateTime.Now;
-        }
+        public Record() { }
 
         public Record(string playerName, int time, DateTime date)
         {

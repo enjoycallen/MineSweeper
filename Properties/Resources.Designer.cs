@@ -209,6 +209,15 @@ namespace MineSweeper.Properties {
         }
         
         /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream loseBgm {
+            get {
+                return ResourceManager.GetStream("loseBgm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
         internal static System.Drawing.Bitmap marked {
@@ -317,11 +326,20 @@ namespace MineSweeper.Properties {
         }
         
         /// <summary>
-        ///   查找类似 v1.4 的本地化字符串。
+        ///   查找类似 v1.5 的本地化字符串。
         /// </summary>
         internal static string version {
             get {
                 return ResourceManager.GetString("version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似于 System.IO.MemoryStream 的 System.IO.UnmanagedMemoryStream 类型的本地化资源。
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream winBgm {
+            get {
+                return ResourceManager.GetStream("winBgm", resourceCulture);
             }
         }
     }

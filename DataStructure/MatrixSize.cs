@@ -5,26 +5,27 @@ namespace MineSweeper.DataStructure
 {
     internal struct MatrixSize : IEnumerable<MatrixIndex>, IData
     {
-        #region 属性
-        public int Row { get; set; }
+        private int row;
+        private int column;
 
-        public int Column {  get; set; }
+        #region 属性
+        public int Row { get => row; set => row = value; }
+
+        public int Column { get => column; set => column = value; }
         #endregion
 
         #region 构造函数
         public MatrixSize() { }
         public MatrixSize(int row, int column)
         {
-            Row = row;
-            Column = column;
+            this.row = row;
+            this.column = column;
         }
         #endregion
 
         #region 方法
-        public bool ValidIndex(int row, int column) =>
-            row >= 0 && row < Row && column >= 0 && column < Column;
-
-        public bool ValidIndex(MatrixIndex index) => ValidIndex(index.Row, index.Column);
+        public bool ValidIndex(MatrixIndex index) =>
+            index.Row >= 0 && index.Row < row && index.Column >= 0 && index.Column < column;
 
         public static implicit operator MatrixSize((int row, int column) size) => new(size.row, size.column);
         #endregion

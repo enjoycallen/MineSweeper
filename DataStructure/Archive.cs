@@ -17,25 +17,8 @@ namespace MineSweeper.DataStructure
         public void Read<T>(T var) where T : class, IReadable => var.ReadFrom(this);
     }
 
-    internal class Writer() : BinaryWriter(new FileStream(Resources.archive, FileMode.Open))
+    internal class Writer() : BinaryWriter(new FileStream(Resources.archive, FileMode.OpenOrCreate))
     {
         public void Write(IWritable var) => var.WriteTo(this);
-    }
-
-    internal static class Archive
-    {
-        public static void Load(MainForm mainForm)
-        {
-            if(File.Exists(Resources.archive)) { }
-            using Reader reader = new();
-            //reader.Read(mainForm.)
-        }
-
-        public static void Save(MainForm mainForm)
-        {
-            using Writer writer = new();
-            writer.Write(mainForm.Setting);
-            //writer.Write()
-        }
     }
 }

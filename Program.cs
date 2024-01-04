@@ -1,3 +1,5 @@
+using MineSweeper.Forms;
+
 namespace MineSweeper
 {
     internal static class Program

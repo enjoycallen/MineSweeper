@@ -1,5 +1,8 @@
 ﻿using MineSweeper.DataStructure;
-using System.Runtime.CompilerServices;
+using MineSweeper.Dialogs;
+using MineSweeper.Forms;
+using System.Media;
+using Resouurces = MineSweeper.Properties.Resources;
 
 namespace MineSweeper.Controls
 {
@@ -28,6 +31,10 @@ namespace MineSweeper.Controls
         public int RemainingMine { get => statusPanel.RemainingMine; set => statusPanel.RemainingMine = value; }
 
         public bool InTiming { get => statusPanel.InTiming; set => statusPanel.InTiming = value; }
+
+        public bool Started { get; set; } = false;
+
+        public MainForm MainForm => Parent as MainForm;
         #endregion
 
         #region 构造函数
@@ -57,15 +64,16 @@ namespace MineSweeper.Controls
         public void Win()
         {
             InTiming = false;
-            plane.Reveal();
             RemainingMine = 0;
+            plane.Reveal();
+            MainForm.Win();
         }
 
         public void Lose()
         {
             InTiming = false;
             plane.Reveal();
-
+            MainForm.Lose();
         }
         #endregion
 
@@ -74,12 +82,14 @@ namespace MineSweeper.Controls
         {
             reader.Read(plane);
             reader.Read(statusPanel);
+            Started = reader.ReadBoolean();
         }
 
         void IWritable.WriteTo(Writer writer)
         {
             writer.Write(plane);
             writer.Write(statusPanel);
+            writer.Write(Started);
         }
         #endregion
     }

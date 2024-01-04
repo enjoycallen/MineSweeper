@@ -18,16 +18,16 @@
                 switch (level)
                 {
                     case GameLevel.Basic:
-                        Size = new(9, 9);
-                        MineCount = 10;
+                        size = new(9, 9);
+                        mineCount = 10;
                         break;
                     case GameLevel.Intermidiate:
-                        Size = new(16, 16);
-                        MineCount = 40;
+                        size = new(16, 16);
+                        mineCount = 40;
                         break;
                     case GameLevel.Advanced:
-                        Size = new(16, 30);
-                        MineCount = 99;
+                        size = new(16, 30);
+                        mineCount = 99;
                         break;
                 }
             }
@@ -81,9 +81,8 @@
 
         public GameSetting(MatrixSize size, int mineCount)
         {
-            level = GameLevel.PlayerDefined;
-            this.size = size;
-            this.mineCount = mineCount;
+            Size = size;
+            MineCount = mineCount;
         }
         #endregion
 
@@ -100,7 +99,7 @@
 
         void IWritable.WriteTo(Writer writer)
         {
-            writer.Write((int)Level);
+            writer.Write((int)level);
             if (level == GameLevel.PlayerDefined)
             {
                 writer.Write(size);

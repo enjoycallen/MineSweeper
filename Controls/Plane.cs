@@ -148,16 +148,15 @@ namespace MineSweeper.Controls
                     {
                         List<Grid> neighbour = new(gridMatrix.Neighbour(activeGrid.Index));
                         if (neighbour.Where(x => x.Mode == GridMode.Marked).Count() == (int)activeGrid.Type)
-                            foreach (var grid in gridMatrix.Neighbour(activeGrid.Index))
+                            foreach (var grid in neighbour)
                             {
-                                if (floodFill(grid)) break;
+                                if (floodFill(grid)) Game.Lose();
                             }
                     }
                     break;
                 case MouseButtons.Left:
-                    if (!Game.InTiming) generateMine();
-                    floodFill(activeGrid);
-                    activeGrid.Explore();
+                    if (!Game.Started) generateMine();
+                    if (floodFill(activeGrid)) Game.Lose();
                     break;
                 case MouseButtons.Right:
                     activeGrid.SwitchMode();
@@ -178,12 +177,7 @@ namespace MineSweeper.Controls
         private bool floodFill(Grid grid)
         {
             if (!grid.Explorable) return false;
-            grid.Explore();
-            if (grid.Type == GridType.Mine)
-            {
-                Game.Lose();
-                return true;
-            }
+            if (grid.Explore()) return true;
             if (grid.Type != GridType.Zero) return false;
             foreach (var neighbour in gridMatrix.Neighbour(grid.Index))
             {
@@ -223,7 +217,7 @@ namespace MineSweeper.Controls
             {
                 gridMatrix[index].Type = map[index] == 0 ? (GridType)map.Neighbour(index).Sum() : GridType.Mine;
             }
-            Game.InTiming = true;
+            Game.Started = Game.InTiming = true;
         }
         #endregion
 

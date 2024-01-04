@@ -62,9 +62,9 @@ namespace MineSweeper
 
         void IWritable.WriteTo(Writer writer)
         {
-            writer.Write(InTiming);
             writer.Write(Time);
             writer.Write(RemainingMine);
+            writer.Write(InTiming);
         }
         #endregion
     }
