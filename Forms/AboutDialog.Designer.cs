@@ -1,4 +1,6 @@
-﻿namespace MineSweeper
+﻿using Resources = MineSweeper.Properties.Resources;
+
+namespace MineSweeper.Forms
 {
     partial class AboutDialog
     {
@@ -28,89 +30,83 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            label1 = new Label();
-            linkLabel1 = new LinkLabel();
-            pictureBox1 = new PictureBox();
-            button1 = new Button();
-            bindingSource1 = new BindingSource(components);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
+            captionLabel = new Label();
+            repositoryLinkLabel = new LinkLabel();
+            minePictureBox = new PictureBox();
+            exitButton = new Button();
+            ((System.ComponentModel.ISupportInitialize)minePictureBox).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // captionLabel
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(117, 28);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(218, 119);
-            label1.TabIndex = 0;
-            label1.Text = "NJUPT B20030919陈天 程序设计 扫雷\n\n版本：v1.4\n\n发布时间：2023/11/19\n\n项目地址：";
+            captionLabel.AutoSize = true;
+            captionLabel.Location = new Point(117, 28);
+            captionLabel.Margin = new Padding(4, 0, 4, 0);
+            captionLabel.Name = "captionLabel";
+            captionLabel.Size = new Size(0, 17);
+            captionLabel.TabIndex = 0;
             // 
-            // linkLabel1
+            // repositoryLinkLabel
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(117, 160);
-            linkLabel1.Margin = new Padding(4, 0, 4, 0);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(268, 17);
-            linkLabel1.TabIndex = 2;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = Properties.Resources.repository;
-            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            repositoryLinkLabel.AutoSize = true;
+            repositoryLinkLabel.Location = new Point(117, 160);
+            repositoryLinkLabel.Margin = new Padding(4, 0, 4, 0);
+            repositoryLinkLabel.Name = "repositoryLinkLabel";
+            repositoryLinkLabel.Size = new Size(0, 17);
+            repositoryLinkLabel.TabIndex = 2;
+            repositoryLinkLabel.TabStop = true;
+            repositoryLinkLabel.LinkClicked += repositoryLinkLabelClicked;
             // 
-            // pictureBox1
+            // minePictureBox
             // 
-            pictureBox1.Image = Properties.Resources.mineSweeper;
-            pictureBox1.Location = new Point(23, 28);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(75, 75);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            minePictureBox.Image = Resources.mineSweeper;
+            minePictureBox.Location = new Point(23, 28);
+            minePictureBox.Margin = new Padding(4);
+            minePictureBox.Name = "minePictureBox";
+            minePictureBox.Size = new Size(75, 75);
+            minePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            minePictureBox.TabIndex = 0;
+            minePictureBox.TabStop = false;
             // 
-            // button1
+            // exitButton
             // 
-            button1.DialogResult = DialogResult.Cancel;
-            button1.Location = new Point(0, 0);
-            button1.Margin = new Padding(4, 4, 4, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(0, 0);
-            button1.TabIndex = 1;
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            exitButton.DialogResult = DialogResult.Cancel;
+            exitButton.Location = new Point(0, 0);
+            exitButton.Margin = new Padding(4);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(0, 0);
+            exitButton.TabIndex = 1;
+            exitButton.UseVisualStyleBackColor = true;
+            exitButton.Click += exitButtonClick;
             // 
             // AboutDialog
             // 
-            AcceptButton = button1;
+            AcceptButton = exitButton;
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = button1;
-            ClientSize = new Size(454, 208);
-            Controls.Add(button1);
-            Controls.Add(linkLabel1);
-            Controls.Add(label1);
-            Controls.Add(pictureBox1);
+            CancelButton = exitButton;
+            ClientSize = new Size(420, 208);
+            Controls.Add(exitButton);
+            Controls.Add(repositoryLinkLabel);
+            Controls.Add(captionLabel);
+            Controls.Add(minePictureBox);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AboutDialog";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "关于“扫雷”";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)minePictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.PictureBox minePictureBox;
+        private System.Windows.Forms.Label captionLabel;
+        private System.Windows.Forms.LinkLabel repositoryLinkLabel;
+        private System.Windows.Forms.Button exitButton;
     }
 }

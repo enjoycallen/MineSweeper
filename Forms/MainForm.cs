@@ -60,7 +60,7 @@ namespace MineSweeper.Forms
         private void 退出ToolStripMenuItemClick(object sender, EventArgs e) => Close();
 
         private void 查看帮助ToolStripMenuItemClick(object sender, EventArgs e) =>
-            Process.Start("explorer.exe", Properties.Resources.helpPage);
+            Process.Start("explorer.exe", Resources.helpPage);
 
         private void 关于AToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -81,8 +81,11 @@ namespace MineSweeper.Forms
             using OptionDialog optionDialog = new(setting);
             if (optionDialog.ShowDialog() == DialogResult.OK)
             {
-                setting = optionDialog.setting;
-                NewGame();
+                if (MessageBox.Show("游戏正在进行中，确定改变设置并开始新游戏吗？", "扫雷", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    setting = optionDialog.setting;
+                    NewGame();
+                }
             }
         }
 

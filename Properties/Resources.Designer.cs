@@ -268,7 +268,7 @@ namespace MineSweeper.Properties {
         }
         
         /// <summary>
-        ///   查找类似 2023/11/19 的本地化字符串。
+        ///   查找类似 2024/1/4 的本地化字符串。
         /// </summary>
         internal static string publishDate {
             get {
