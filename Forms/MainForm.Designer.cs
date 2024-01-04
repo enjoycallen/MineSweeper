@@ -127,7 +127,7 @@
             关于ToolStripMenuItem.Name = "关于ToolStripMenuItem";
             关于ToolStripMenuItem.Size = new Size(161, 22);
             关于ToolStripMenuItem.Text = "关于(&A)";
-            关于ToolStripMenuItem.Click += 关于AToolStripMenuItem_Click;
+            关于ToolStripMenuItem.Click += 关于AToolStripMenuItemClick;
             // 
             // MainForm
             // 

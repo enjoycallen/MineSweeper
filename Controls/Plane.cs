@@ -7,6 +7,8 @@ namespace MineSweeper.Controls
     internal class Plane : Control, IData
     {
         #region 字段
+        private MatrixSize size;
+        private int mineCount;
         private Matrix<Grid> gridMatrix;
         private Grid activeGrid = null;
         private bool active = false;
@@ -14,10 +16,13 @@ namespace MineSweeper.Controls
         #endregion
 
         #region 属性
-        public new MatrixSize Size { get; init; }
-        public int Row => Size.Row;
-        public int Column => Size.Column;
-        public int MineCount { get; init; }
+        public new MatrixSize Size { get => size; }
+
+        public int Row => size.Row;
+
+        public int Column => size.Column;
+
+        public int MineCount { get => mineCount; }
         
         private Grid ActiveGrid
         {
@@ -50,37 +55,37 @@ namespace MineSweeper.Controls
             {
                 if (active == value) return;
                 active = value;
-                if (ActiveGrid == null) return;
+                if (activeGrid == null) return;
                 if (active)
                 {
-                    switch (MouseState)
+                    switch (mouseState)
                     {
                         case MouseButtons.Left | MouseButtons.Right:
-                            foreach (var grid in gridMatrix.NeighbourWithin(ActiveGrid.Index))
+                            foreach (var grid in gridMatrix.NeighbourWithin(activeGrid.Index))
                             {
                                 grid.State = GridState.MouseDown;
                             }
                             break;
                         case MouseButtons.Left:
-                            ActiveGrid.State = GridState.MouseDown;
+                            activeGrid.State = GridState.MouseDown;
                             break;
                         default:
-                            ActiveGrid.State = GridState.MouseOver;
+                            activeGrid.State = GridState.MouseOver;
                             break;
                     }
                 }
                 else
                 {
-                    switch (MouseState)
+                    switch (mouseState)
                     {
                         case MouseButtons.Left | MouseButtons.Right:
-                            foreach (var grid in gridMatrix.NeighbourWithin(ActiveGrid.Index))
+                            foreach (var grid in gridMatrix.NeighbourWithin(activeGrid.Index))
                             {
                                 grid.State = GridState.None;
                             }
                             break;
                         default:
-                            ActiveGrid.State = GridState.None;
+                            activeGrid.State = GridState.None;
                             break;
                     }
                 }
@@ -93,9 +98,9 @@ namespace MineSweeper.Controls
         #region 构造函数
         public Plane(MatrixSize size, int mineCount)
         {
-            Size = size;
-            MineCount = mineCount;
-            gridMatrix = new(Size);
+            this.size = size;
+            this.mineCount = mineCount;
+            gridMatrix = new(size);
             initializeComponent();
         }
         #endregion

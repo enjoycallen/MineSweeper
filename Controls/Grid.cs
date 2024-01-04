@@ -1,20 +1,15 @@
 ﻿using MineSweeper.DataStructure;
-using System.Runtime.CompilerServices;
 
 namespace MineSweeper.Controls
 {
-    internal class Grid : BasicGrid
+    internal class Grid(MatrixIndex index) : BasicGrid
     {
         #region 字段
-        private MatrixIndex index;
+        private MatrixIndex index = index;
         #endregion
 
         #region 属性
-        public MatrixIndex Index { get => index; set => index = value; }
-
-        public int Row => index.Row;
-
-        public int Column => index.Column;
+        public MatrixIndex Index { get => index; }
 
         public Plane Plane => Parent as Plane;
 
@@ -32,14 +27,6 @@ namespace MineSweeper.Controls
         }
 
         public bool Explorable => Mode == GridMode.Concealed || Mode == GridMode.Undetermined;
-        #endregion
-
-        #region 构造函数
-        public Grid() { }
-
-        public Grid(MatrixIndex index) => Index = index;
-
-        public Grid(MatrixIndex index, GridType type, GridMode mode) : base(type, mode) => Index = index;
         #endregion
 
         #region 方法

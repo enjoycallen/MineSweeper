@@ -62,13 +62,13 @@ namespace MineSweeper.Forms
         private void 查看帮助ToolStripMenuItemClick(object sender, EventArgs e) =>
             Process.Start("explorer.exe", Resources.helpPage);
 
-        private void 关于AToolStripMenuItem_Click(object sender, EventArgs e)
+        private void 关于AToolStripMenuItemClick(object sender, EventArgs e)
         {
             using AboutDialog about = new();
             about.ShowDialog();
         }
 
-        /*private void 统计信息ToolStripMenuItem_Click(object sender, EventArgs e)
+        /*private void 统计信息ToolStripMenuItemClick(object sender, EventArgs e)
         {
             using (var statistics = new StatisticsDialog())
             {
@@ -81,7 +81,8 @@ namespace MineSweeper.Forms
             using OptionDialog optionDialog = new(setting);
             if (optionDialog.ShowDialog() == DialogResult.OK)
             {
-                if (MessageBox.Show("游戏正在进行中，确定改变设置并开始新游戏吗？", "扫雷", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (!game.Started || MessageBox.Show("游戏正在进行中，确定改变设置并开始新游戏吗？", "扫雷",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
                     setting = optionDialog.setting;
                     NewGame();
@@ -128,14 +129,15 @@ namespace MineSweeper.Forms
 
         private void mainFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (game.Started && MessageBox.Show("游戏正在进行，要保存并退出吗？", "扫雷", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
-            {
-                e.Cancel = true;
-            }
-            else
+            if (!game.Started || MessageBox.Show("游戏正在进行，要保存并退出吗？", "扫雷",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
             {
                 using Writer writer = new();
                 writer.Write(this);
+            }
+            else
+            {
+                e.Cancel = true;
             }
         }
         #endregion
