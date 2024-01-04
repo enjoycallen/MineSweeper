@@ -15,9 +15,7 @@ namespace MineSweeper.DataStructure
         public int Row => size.Row;
 
         public int Column => size.Column;
-        #endregion
 
-        #region 索引器
         public T this[int row, int column]
         {
             get => this[(row, column)];
@@ -45,7 +43,7 @@ namespace MineSweeper.DataStructure
                     yield return this[index + offset];
                 }
             }
-                
+
         }
 
         public IEnumerable<T> NeighbourWithin(MatrixIndex index)
@@ -58,7 +56,7 @@ namespace MineSweeper.DataStructure
         #region 接口实现
         public IEnumerator<T> GetEnumerator()
         {
-            foreach(var element in matrix)
+            foreach (var element in matrix)
             {
                 yield return element;
             }

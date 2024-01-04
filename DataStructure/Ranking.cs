@@ -6,6 +6,16 @@
         private List<Record> records = [];
         #endregion
 
+        #region 属性
+        public int Count => records.Count;
+
+        public Record this[int x] { get => records[x]; }
+        #endregion
+
+        #region 构造函数
+        public Ranking() { }
+        #endregion
+
         #region 方法
         public void Add(Record record)
         {

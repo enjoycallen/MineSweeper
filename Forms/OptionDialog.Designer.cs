@@ -28,42 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox1 = new GroupBox();
+            settingGroupBox = new GroupBox();
             mineCountTextBox = new TextBox();
             widthTextBox = new TextBox();
             heightTextBox = new TextBox();
-            mineCountCaption = new Label();
-            widthCaption = new Label();
-            heightCaption = new Label();
+            mineCountCaptionLabel = new Label();
+            widthCaptionLabel = new Label();
+            heightCaptionLabel = new Label();
             playerDefinedRadioButton = new RadioButton();
             advancedRadioButton = new RadioButton();
             intermediateRadioButton = new RadioButton();
             basicRadioButton = new RadioButton();
             confirmButton = new Button();
             cancelButton = new Button();
-            groupBox1.SuspendLayout();
+            settingGroupBox.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox1
+            // settingGroupBox
             // 
-            groupBox1.Controls.Add(mineCountTextBox);
-            groupBox1.Controls.Add(widthTextBox);
-            groupBox1.Controls.Add(heightTextBox);
-            groupBox1.Controls.Add(mineCountCaption);
-            groupBox1.Controls.Add(widthCaption);
-            groupBox1.Controls.Add(heightCaption);
-            groupBox1.Controls.Add(playerDefinedRadioButton);
-            groupBox1.Controls.Add(advancedRadioButton);
-            groupBox1.Controls.Add(intermediateRadioButton);
-            groupBox1.Controls.Add(basicRadioButton);
-            groupBox1.Location = new Point(23, 22);
-            groupBox1.Margin = new Padding(4);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4);
-            groupBox1.Size = new Size(383, 228);
-            groupBox1.TabIndex = 0;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "难度";
+            settingGroupBox.Controls.Add(mineCountTextBox);
+            settingGroupBox.Controls.Add(widthTextBox);
+            settingGroupBox.Controls.Add(heightTextBox);
+            settingGroupBox.Controls.Add(mineCountCaptionLabel);
+            settingGroupBox.Controls.Add(widthCaptionLabel);
+            settingGroupBox.Controls.Add(heightCaptionLabel);
+            settingGroupBox.Controls.Add(playerDefinedRadioButton);
+            settingGroupBox.Controls.Add(advancedRadioButton);
+            settingGroupBox.Controls.Add(intermediateRadioButton);
+            settingGroupBox.Controls.Add(basicRadioButton);
+            settingGroupBox.Location = new Point(23, 22);
+            settingGroupBox.Margin = new Padding(4);
+            settingGroupBox.Name = "settingGroupBox";
+            settingGroupBox.Padding = new Padding(4);
+            settingGroupBox.Size = new Size(383, 228);
+            settingGroupBox.TabIndex = 0;
+            settingGroupBox.TabStop = false;
+            settingGroupBox.Text = "难度";
             // 
             // mineCountTextBox
             // 
@@ -98,35 +98,35 @@
             heightTextBox.TabIndex = 6;
             heightTextBox.KeyPress += textBoxKeyPress;
             // 
-            // mineCountCaption
+            // mineCountCaptionLabel
             // 
-            mineCountCaption.AutoSize = true;
-            mineCountCaption.Location = new Point(188, 162);
-            mineCountCaption.Margin = new Padding(4, 0, 4, 0);
-            mineCountCaption.Name = "mineCountCaption";
-            mineCountCaption.Size = new Size(82, 17);
-            mineCountCaption.TabIndex = 9;
-            mineCountCaption.Text = "雷数(10-)(&M):";
+            mineCountCaptionLabel.AutoSize = true;
+            mineCountCaptionLabel.Location = new Point(188, 162);
+            mineCountCaptionLabel.Margin = new Padding(4, 0, 4, 0);
+            mineCountCaptionLabel.Name = "mineCountCaptionLabel";
+            mineCountCaptionLabel.Size = new Size(82, 17);
+            mineCountCaptionLabel.TabIndex = 9;
+            mineCountCaptionLabel.Text = "雷数(10-)(&M):";
             // 
-            // widthCaption
+            // widthCaptionLabel
             // 
-            widthCaption.AutoSize = true;
-            widthCaption.Location = new Point(188, 118);
-            widthCaption.Margin = new Padding(4, 0, 4, 0);
-            widthCaption.Name = "widthCaption";
-            widthCaption.Size = new Size(89, 17);
-            widthCaption.TabIndex = 7;
-            widthCaption.Text = "宽度(9-30)(&W):";
+            widthCaptionLabel.AutoSize = true;
+            widthCaptionLabel.Location = new Point(188, 118);
+            widthCaptionLabel.Margin = new Padding(4, 0, 4, 0);
+            widthCaptionLabel.Name = "widthCaptionLabel";
+            widthCaptionLabel.Size = new Size(89, 17);
+            widthCaptionLabel.TabIndex = 7;
+            widthCaptionLabel.Text = "宽度(9-30)(&W):";
             // 
-            // heightCaption
+            // heightCaptionLabel
             // 
-            heightCaption.AutoSize = true;
-            heightCaption.Location = new Point(188, 74);
-            heightCaption.Margin = new Padding(4, 0, 4, 0);
-            heightCaption.Name = "heightCaption";
-            heightCaption.Size = new Size(86, 17);
-            heightCaption.TabIndex = 5;
-            heightCaption.Text = "高度(9-24)(&H):";
+            heightCaptionLabel.AutoSize = true;
+            heightCaptionLabel.Location = new Point(188, 74);
+            heightCaptionLabel.Margin = new Padding(4, 0, 4, 0);
+            heightCaptionLabel.Name = "heightCaptionLabel";
+            heightCaptionLabel.Size = new Size(86, 17);
+            heightCaptionLabel.TabIndex = 5;
+            heightCaptionLabel.Text = "高度(9-24)(&H):";
             // 
             // playerDefinedRadioButton
             // 
@@ -209,22 +209,23 @@
             ClientSize = new Size(425, 324);
             Controls.Add(cancelButton);
             Controls.Add(confirmButton);
-            Controls.Add(groupBox1);
+            Controls.Add(settingGroupBox);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(4);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "OptionDialog";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "选项";
             FormClosing += optionFormClosing;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            settingGroupBox.ResumeLayout(false);
+            settingGroupBox.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox settingGroupBox;
         private System.Windows.Forms.RadioButton advancedRadioButton;
         private System.Windows.Forms.RadioButton intermediateRadioButton;
         private System.Windows.Forms.RadioButton basicRadioButton;
@@ -232,9 +233,9 @@
         private System.Windows.Forms.TextBox mineCountTextBox;
         private System.Windows.Forms.TextBox widthTextBox;
         private System.Windows.Forms.TextBox heightTextBox;
-        private System.Windows.Forms.Label mineCountCaption;
-        private System.Windows.Forms.Label widthCaption;
-        private System.Windows.Forms.Label heightCaption;
+        private System.Windows.Forms.Label mineCountCaptionLabel;
+        private System.Windows.Forms.Label widthCaptionLabel;
+        private System.Windows.Forms.Label heightCaptionLabel;
         private System.Windows.Forms.Button confirmButton;
         private System.Windows.Forms.Button cancelButton;
     }

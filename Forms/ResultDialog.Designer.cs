@@ -33,11 +33,11 @@
             replayButton = new Button();
             exitButton = new Button();
             playerNameTextBox = new TextBox();
-            playerNameCaption = new Label();
-            dateCaption = new Label();
-            timeCaption = new Label();
-            winCaption = new Label();
-            loseCaption = new Label();
+            playerNameCaptionLabel = new Label();
+            dateCaptionLabel = new Label();
+            timeCaptionLabel = new Label();
+            winCaptionLabel = new Label();
+            loseCaptionLabel = new Label();
             SuspendLayout();
             // 
             // dateLabel
@@ -91,59 +91,59 @@
             playerNameTextBox.Size = new Size(186, 23);
             playerNameTextBox.TabIndex = 9;
             // 
-            // playerNameCaption
+            // playerNameCaptionLabel
             // 
-            playerNameCaption.AutoSize = true;
-            playerNameCaption.Location = new Point(35, 158);
-            playerNameCaption.Margin = new Padding(4, 0, 4, 0);
-            playerNameCaption.Name = "playerNameCaption";
-            playerNameCaption.Size = new Size(68, 17);
-            playerNameCaption.TabIndex = 6;
-            playerNameCaption.Text = "玩家名称：";
+            playerNameCaptionLabel.AutoSize = true;
+            playerNameCaptionLabel.Location = new Point(35, 158);
+            playerNameCaptionLabel.Margin = new Padding(4, 0, 4, 0);
+            playerNameCaptionLabel.Name = "playerNameCaptionLabel";
+            playerNameCaptionLabel.Size = new Size(68, 17);
+            playerNameCaptionLabel.TabIndex = 6;
+            playerNameCaptionLabel.Text = "玩家名称：";
             // 
-            // dateCaption
+            // dateCaptionLabel
             // 
-            dateCaption.AutoSize = true;
-            dateCaption.Location = new Point(35, 118);
-            dateCaption.Margin = new Padding(4, 0, 4, 0);
-            dateCaption.Name = "dateCaption";
-            dateCaption.Size = new Size(44, 17);
-            dateCaption.TabIndex = 7;
-            dateCaption.Text = "日期：";
+            dateCaptionLabel.AutoSize = true;
+            dateCaptionLabel.Location = new Point(35, 118);
+            dateCaptionLabel.Margin = new Padding(4, 0, 4, 0);
+            dateCaptionLabel.Name = "dateCaptionLabel";
+            dateCaptionLabel.Size = new Size(44, 17);
+            dateCaptionLabel.TabIndex = 7;
+            dateCaptionLabel.Text = "日期：";
             // 
-            // timeCaption
+            // timeCaptionLabel
             // 
-            timeCaption.AutoSize = true;
-            timeCaption.Location = new Point(35, 78);
-            timeCaption.Margin = new Padding(4, 0, 4, 0);
-            timeCaption.Name = "timeCaption";
-            timeCaption.Size = new Size(44, 17);
-            timeCaption.TabIndex = 8;
-            timeCaption.Text = "用时：";
+            timeCaptionLabel.AutoSize = true;
+            timeCaptionLabel.Location = new Point(35, 78);
+            timeCaptionLabel.Margin = new Padding(4, 0, 4, 0);
+            timeCaptionLabel.Name = "timeCaptionLabel";
+            timeCaptionLabel.Size = new Size(44, 17);
+            timeCaptionLabel.TabIndex = 8;
+            timeCaptionLabel.Text = "用时：";
             // 
-            // winCaption
+            // winCaptionLabel
             // 
-            winCaption.AutoSize = true;
-            winCaption.Location = new Point(135, 35);
-            winCaption.Margin = new Padding(4, 0, 4, 0);
-            winCaption.Name = "winCaption";
-            winCaption.Size = new Size(92, 17);
-            winCaption.TabIndex = 5;
-            winCaption.Text = "恭喜！您赢了！";
-            winCaption.TextAlign = ContentAlignment.TopCenter;
-            winCaption.Visible = false;
+            winCaptionLabel.AutoSize = true;
+            winCaptionLabel.Location = new Point(135, 35);
+            winCaptionLabel.Margin = new Padding(4, 0, 4, 0);
+            winCaptionLabel.Name = "winCaptionLabel";
+            winCaptionLabel.Size = new Size(92, 17);
+            winCaptionLabel.TabIndex = 5;
+            winCaptionLabel.Text = "恭喜！您赢了！";
+            winCaptionLabel.TextAlign = ContentAlignment.TopCenter;
+            winCaptionLabel.Visible = false;
             // 
-            // loseCaption
+            // loseCaptionLabel
             // 
-            loseCaption.AutoSize = true;
-            loseCaption.Location = new Point(93, 35);
-            loseCaption.Margin = new Padding(4, 0, 4, 0);
-            loseCaption.Name = "loseCaption";
-            loseCaption.Size = new Size(176, 17);
-            loseCaption.TabIndex = 5;
-            loseCaption.Text = "不好意思，您输了。下次走运！";
-            loseCaption.TextAlign = ContentAlignment.TopCenter;
-            loseCaption.Visible = false;
+            loseCaptionLabel.AutoSize = true;
+            loseCaptionLabel.Location = new Point(93, 35);
+            loseCaptionLabel.Margin = new Padding(4, 0, 4, 0);
+            loseCaptionLabel.Name = "loseCaptionLabel";
+            loseCaptionLabel.Size = new Size(176, 17);
+            loseCaptionLabel.TabIndex = 5;
+            loseCaptionLabel.Text = "不好意思，您输了。下次走运！";
+            loseCaptionLabel.TextAlign = ContentAlignment.TopCenter;
+            loseCaptionLabel.Visible = false;
             // 
             // ResultDialog
             // 
@@ -157,11 +157,11 @@
             Controls.Add(replayButton);
             Controls.Add(exitButton);
             Controls.Add(playerNameTextBox);
-            Controls.Add(playerNameCaption);
-            Controls.Add(dateCaption);
-            Controls.Add(timeCaption);
-            Controls.Add(loseCaption);
-            Controls.Add(winCaption);
+            Controls.Add(playerNameCaptionLabel);
+            Controls.Add(dateCaptionLabel);
+            Controls.Add(timeCaptionLabel);
+            Controls.Add(loseCaptionLabel);
+            Controls.Add(winCaptionLabel);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(4);
             MaximizeBox = false;
@@ -181,10 +181,10 @@
         private System.Windows.Forms.Button replayButton;
         private System.Windows.Forms.Button exitButton;
         private System.Windows.Forms.TextBox playerNameTextBox;
-        private System.Windows.Forms.Label playerNameCaption;
-        private System.Windows.Forms.Label dateCaption;
-        private System.Windows.Forms.Label timeCaption;
-        private System.Windows.Forms.Label winCaption;
-        private Label loseCaption;
+        private System.Windows.Forms.Label playerNameCaptionLabel;
+        private System.Windows.Forms.Label dateCaptionLabel;
+        private System.Windows.Forms.Label timeCaptionLabel;
+        private System.Windows.Forms.Label winCaptionLabel;
+        private Label loseCaptionLabel;
     }
 }

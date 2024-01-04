@@ -4,22 +4,28 @@ namespace MineSweeper.Dialogs
 {
     internal partial class ResultDialog : Form
     {
+        #region 字段
+        private Record record;
+        #endregion
+
+        #region 属性
+        public Record Record => record;
+        #endregion
+
         #region 构造函数
-        public ResultDialog() => InitializeComponent();
+        public ResultDialog(ResultDialogMode mode, int time)
+        {
+            InitializeComponent();
+            record.Time = time;
+            record.Date = DateTime.Now;
+            (mode == ResultDialogMode.Lose ? loseCaptionLabel : winCaptionLabel).Visible = true;
+            timeLabel.Text = time + " 秒";
+            dateLabel.Text = record.Date.ToString();
+            playerNameCaptionLabel.Visible = playerNameTextBox.Visible = mode == ResultDialogMode.Record;
+        }
         #endregion
 
         #region 方法
-        public Record ShowDialog(ResultDialogMode mode, int time)
-        {
-            var date = DateTime.Now;
-            (mode == ResultDialogMode.Lose ? loseCaption : winCaption).Visible = true;
-            timeLabel.Text = time + " 秒";
-            dateLabel.Text = date.ToString();
-            playerNameCaption.Visible = playerNameTextBox.Visible = mode == ResultDialogMode.Record;
-            ShowDialog();
-            return mode == ResultDialogMode.Record ? new Record(playerNameTextBox.Text, time, date) : default;
-        }
-
         private void exitButtonClick(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
         private void replayButtonClick(object sender, EventArgs e) => DialogResult = DialogResult.OK;
@@ -30,6 +36,10 @@ namespace MineSweeper.Dialogs
             {
                 MessageBox.Show("玩家名称不能为空！", "扫雷", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Cancel = true;
+            }
+            else
+            {
+                record.PlayerName = playerNameTextBox.Text;
             }
         }
         #endregion

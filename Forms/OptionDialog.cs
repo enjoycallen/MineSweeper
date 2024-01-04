@@ -4,7 +4,13 @@ namespace MineSweeper.Forms
 {
     internal partial class OptionDialog : Form
     {
-        public GameSetting setting;
+        #region 字段
+        private GameSetting setting;
+        #endregion
+
+        #region 属性
+        public GameSetting Setting => setting;
+        #endregion
 
         public OptionDialog(GameSetting setting)
         {
@@ -31,11 +37,11 @@ namespace MineSweeper.Forms
             }
         }
 
-        private void cancelButtonClick(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-            Close();
-        }
+        private void playerDefinedRadioButtonCheckedChanged(object sender, EventArgs e) =>
+            heightTextBox.Enabled = widthTextBox.Enabled = mineCountTextBox.Enabled = playerDefinedRadioButton.Checked;
+
+        private void textBoxKeyPress(object sender, KeyPressEventArgs e) =>
+            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8;
 
         private void confirmButtonClick(object sender, EventArgs e)
         {
@@ -43,8 +49,11 @@ namespace MineSweeper.Forms
             Close();
         }
 
-        private void textBoxKeyPress(object sender, KeyPressEventArgs e) =>
-            e.Handled = !char.IsDigit(e.KeyChar) && e.KeyChar != 8;
+        private void cancelButtonClick(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
 
         private void optionFormClosing(object sender, FormClosingEventArgs e)
         {
@@ -88,8 +97,5 @@ namespace MineSweeper.Forms
                 }
             }
         }
-
-        private void playerDefinedRadioButtonCheckedChanged(object sender, EventArgs e) =>
-            heightTextBox.Enabled = widthTextBox.Enabled = mineCountTextBox.Enabled = playerDefinedRadioButton.Checked;
     }
 }

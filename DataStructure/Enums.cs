@@ -1,12 +1,14 @@
 ﻿namespace MineSweeper.DataStructure
 {
-    public enum GameLevel { Basic, Intermidiate, Advanced, PlayerDefined }
+    internal enum GameLevel { Basic, Intermidiate, Advanced, PlayerDefined }
 
-    public enum ResultDialogMode { Lose, Win, Record }
+    internal enum GameState { Pendnig, Started, Finished }
 
-    public enum GridType { Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Mine, Undetermined }
+    internal enum GridType { Zero, One, Two, Three, Four, Five, Six, Seven, Eight, Mine, Undetermined }
 
-    public enum GridMode { Concealed, Marked, Undetermined, Explored, Revealed }
+    internal enum GridMode { Concealed, Marked, Undetermined, Explored, Revealed }
 
-    public enum GridState { None, MouseOver, MouseDown }
+    internal enum GridState { None, MouseOver, MouseDown }
+
+    internal enum ResultDialogMode { Lose, Win, Record }
 }

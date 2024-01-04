@@ -65,40 +65,41 @@
             // 
             新游戏ToolStripMenuItem.Name = "新游戏ToolStripMenuItem";
             新游戏ToolStripMenuItem.ShortcutKeys = Keys.F2;
-            新游戏ToolStripMenuItem.Size = new Size(160, 22);
+            新游戏ToolStripMenuItem.Size = new Size(180, 22);
             新游戏ToolStripMenuItem.Text = "新游戏(&N)";
             新游戏ToolStripMenuItem.Click += 新游戏ToolStripMenuItemClick;
             // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(157, 6);
+            toolStripMenuItem2.Size = new Size(177, 6);
             // 
             // 统计信息ToolStripMenuItem
             // 
             统计信息ToolStripMenuItem.Name = "统计信息ToolStripMenuItem";
             统计信息ToolStripMenuItem.ShortcutKeys = Keys.F4;
-            统计信息ToolStripMenuItem.Size = new Size(160, 22);
+            统计信息ToolStripMenuItem.Size = new Size(180, 22);
             统计信息ToolStripMenuItem.Text = "统计信息(&S)";
+            统计信息ToolStripMenuItem.Click += 统计信息ToolStripMenuItemClick;
             // 
             // 选项ToolStripMenuItem
             // 
             选项ToolStripMenuItem.Name = "选项ToolStripMenuItem";
             选项ToolStripMenuItem.ShortcutKeys = Keys.F5;
-            选项ToolStripMenuItem.Size = new Size(160, 22);
+            选项ToolStripMenuItem.Size = new Size(180, 22);
             选项ToolStripMenuItem.Text = "选项(&O)";
             选项ToolStripMenuItem.Click += 选项OToolStripMenuItem_Click;
             // 
             // toolStripMenuItem3
             // 
             toolStripMenuItem3.Name = "toolStripMenuItem3";
-            toolStripMenuItem3.Size = new Size(157, 6);
+            toolStripMenuItem3.Size = new Size(177, 6);
             // 
             // 退出ToolStripMenuItem
             // 
             退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
             退出ToolStripMenuItem.ShortcutKeys = Keys.F7;
-            退出ToolStripMenuItem.Size = new Size(160, 22);
+            退出ToolStripMenuItem.Size = new Size(180, 22);
             退出ToolStripMenuItem.Text = "退出(&X)";
             退出ToolStripMenuItem.Click += 退出ToolStripMenuItemClick;
             // 

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="publishDate" xml:space="preserve">
-    <value>2024/1/4</value>
+    <value>2024/1/5</value>
     <comment>发布日期</comment>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -140,7 +140,7 @@
     <comment>存档文件</comment>
   </data>
   <data name="version" xml:space="preserve">
-    <value>v1.5</value>
+    <value>v1.6</value>
     <comment>版本</comment>
   </data>
   <data name="concealedMouseOver" type="System.Resources.ResXFileRef, System.Windows.Forms">

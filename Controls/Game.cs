@@ -1,8 +1,5 @@
 ﻿using MineSweeper.DataStructure;
-using MineSweeper.Dialogs;
 using MineSweeper.Forms;
-using System.Media;
-using Resouurces = MineSweeper.Properties.Resources;
 
 namespace MineSweeper.Controls
 {
@@ -11,6 +8,7 @@ namespace MineSweeper.Controls
         #region 字段
         private Plane plane;
         private StatusPanel statusPanel;
+        private GameState state = GameState.Pendnig;
         #endregion
 
         #region 属性
@@ -32,7 +30,23 @@ namespace MineSweeper.Controls
 
         public bool InTiming { get => statusPanel.InTiming; set => statusPanel.InTiming = value; }
 
-        public bool Started { get; set; } = false;
+        public GameState State
+        {
+            get => state;
+            set
+            {
+                state = value;
+                if (state == GameState.Started)
+                {
+                    InTiming = true;
+                }
+                else if (state == GameState.Finished)
+                {
+                    InTiming = false;
+                    plane.Reveal();
+                }
+            }
+        }
 
         public MainForm MainForm => Parent as MainForm;
         #endregion
@@ -63,16 +77,14 @@ namespace MineSweeper.Controls
 
         public void Win()
         {
-            InTiming = false;
+            State = GameState.Finished;
             RemainingMine = 0;
-            plane.Reveal();
             MainForm.Win();
         }
 
         public void Lose()
         {
-            InTiming = false;
-            plane.Reveal();
+            State = GameState.Finished;
             MainForm.Lose();
         }
         #endregion
@@ -82,14 +94,14 @@ namespace MineSweeper.Controls
         {
             reader.Read(plane);
             reader.Read(statusPanel);
-            Started = reader.ReadBoolean();
+            State = (GameState)reader.ReadInt32();
         }
 
         void IWritable.WriteTo(Writer writer)
         {
             writer.Write(plane);
             writer.Write(statusPanel);
-            writer.Write(Started);
+            writer.Write((int)State);
         }
         #endregion
     }
