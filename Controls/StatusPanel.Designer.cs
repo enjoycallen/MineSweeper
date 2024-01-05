@@ -1,4 +1,4 @@
-﻿namespace MineSweeper
+﻿namespace MineSweeper.Controls
 {
     partial class StatusPanel
     {

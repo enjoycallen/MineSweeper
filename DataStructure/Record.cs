@@ -28,8 +28,7 @@
         #endregion
 
         #region 接口实现
-        int IComparable<Record>.CompareTo(Record other) =>
-            time < other.time || time == other.time && date > other.date ? -1 : 1;
+        int IComparable<Record>.CompareTo(Record other) => time < other.time || time == other.time && date > other.date ? -1 : 1;
 
         void IReadable.ReadFrom(Reader reader)
         {

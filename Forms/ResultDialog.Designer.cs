@@ -1,4 +1,4 @@
-﻿namespace MineSweeper.Dialogs
+﻿namespace MineSweeper.Forms
 {
     partial class ResultDialog
     {

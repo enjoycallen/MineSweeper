@@ -105,14 +105,6 @@ namespace MineSweeper.Controls
         #endregion
 
         #region 方法
-        public void Reveal()
-        {
-            foreach (var grid in gridMatrix)
-            {
-                grid.Reveal();
-            }
-        }
-
         private void initializeComponent()
         {
             SuspendLayout();
@@ -222,6 +214,14 @@ namespace MineSweeper.Controls
                 if (grid.Type != GridType.Mine && grid.Mode != GridMode.Explored) return false;
             }
             return true;
+        }
+
+        public void Reveal()
+        {
+            foreach (var grid in gridMatrix)
+            {
+                grid.Reveal();
+            }
         }
         #endregion
 

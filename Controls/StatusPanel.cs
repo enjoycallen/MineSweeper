@@ -1,6 +1,6 @@
 ﻿using MineSweeper.DataStructure;
 
-namespace MineSweeper
+namespace MineSweeper.Controls
 {
     public partial class StatusPanel : UserControl, IData
     {

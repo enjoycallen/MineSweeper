@@ -15,6 +15,7 @@ namespace MineSweeper.DataStructure
 
         #region 构造函数
         public MatrixSize() { }
+
         public MatrixSize(int row, int column)
         {
             this.row = row;
@@ -23,8 +24,7 @@ namespace MineSweeper.DataStructure
         #endregion
 
         #region 方法
-        public bool ValidIndex(MatrixIndex index) =>
-            index.Row >= 0 && index.Row < row && index.Column >= 0 && index.Column < column;
+        public bool ValidIndex(MatrixIndex index) => index.Row >= 0 && index.Row < row && index.Column >= 0 && index.Column < column;
 
         public static implicit operator MatrixSize((int row, int column) size) => new(size.row, size.column);
         #endregion

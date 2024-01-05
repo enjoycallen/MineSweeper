@@ -1,6 +1,6 @@
 ﻿using MineSweeper.DataStructure;
 
-namespace MineSweeper.Dialogs
+namespace MineSweeper.Forms
 {
     internal partial class ResultDialog : Form
     {

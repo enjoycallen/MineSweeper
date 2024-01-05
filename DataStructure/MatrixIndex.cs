@@ -24,8 +24,8 @@
         #endregion
 
         #region 方法
-        public static MatrixIndex operator +(MatrixIndex index, MatrixIndex offset)
-            => new(index.Row + offset.row, index.Column + offset.column);
+        public static MatrixIndex operator +(MatrixIndex index, MatrixIndex offset) => new(index.Row + offset.row, index.Column + offset.column);
+
         public static implicit operator MatrixIndex((int row, int column) index) => new(index.row, index.column);
         #endregion
 
