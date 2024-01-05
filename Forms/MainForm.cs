@@ -15,12 +15,6 @@ namespace MineSweeper.Forms
         private Rankings rankings = new();
         #endregion
 
-        #region 属性
-        public GameLevel Level => setting.Level;
-
-        public int Time => game.Time;
-        #endregion
-
         #region 构造函数
         public MainForm() => InitializeComponent();
         #endregion
@@ -68,23 +62,23 @@ namespace MineSweeper.Forms
             about.ShowDialog();
         }
 
-        /*private void 统计信息ToolStripMenuItemClick(object sender, EventArgs e)
+        private void 统计信息ToolStripMenuItemClick(object sender, EventArgs e)
         {
-            using (var statistics = new StatisticsDialog())
+            using (StatisticsDialog statisticsDialog = new(rankings))
             {
-                statistics.ShowDialog();
+                statisticsDialog.ShowDialog();
             }
-        }*/
+        }
 
         private void 选项OToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using OptionDialog optionDialog = new(setting);
             if (optionDialog.ShowDialog() == DialogResult.OK)
             {
-                if (!game.Started || MessageBox.Show("游戏正在进行中，确定改变设置并开始新游戏吗？", "扫雷",
+                if (game.State != GameState.Started || MessageBox.Show("游戏正在进行中，确定改变设置并开始新游戏吗？", "扫雷",
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
                 {
-                    setting = optionDialog.setting;
+                    setting = optionDialog.Setting;
                     NewGame();
                 }
             }
@@ -96,14 +90,12 @@ namespace MineSweeper.Forms
             {
                 bgm.Play();
             }
-            using var resultDialog = new ResultDialog();
-            if (Level == GameLevel.PlayerDefined)
+            using ResultDialog resultDialog = new(setting.Level == GameLevel.PlayerDefined ?
+                ResultDialogMode.Win : ResultDialogMode.Record, game.Time);
+            resultDialog.ShowDialog();
+            if (setting.Level == GameLevel.PlayerDefined)
             {
-                resultDialog.ShowDialog(ResultDialogMode.Win, Time);
-            }
-            else
-            {
-                rankings.Add(Level, resultDialog.ShowDialog(ResultDialogMode.Record, Time));
+                rankings.Add(setting.Level, resultDialog.Record);
             }
             NewGame();
             if (resultDialog.DialogResult == DialogResult.Cancel)
@@ -118,8 +110,8 @@ namespace MineSweeper.Forms
             {
                 bgm.Play();
             }
-            using var resultDialog = new ResultDialog();
-            resultDialog.ShowDialog(ResultDialogMode.Lose, Time);
+            using ResultDialog resultDialog = new(ResultDialogMode.Lose, game.Time);
+            resultDialog.ShowDialog();
             NewGame();
             if (resultDialog.DialogResult == DialogResult.Cancel)
             {
@@ -129,7 +121,7 @@ namespace MineSweeper.Forms
 
         private void mainFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!game.Started || MessageBox.Show("游戏正在进行，要保存并退出吗？", "扫雷",
+            if (game.State != GameState.Started || MessageBox.Show("游戏正在进行，要保存并退出吗？", "扫雷",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
             {
                 using Writer writer = new();

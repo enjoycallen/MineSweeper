@@ -36,14 +36,18 @@ namespace MineSweeper.Controls
             set
             {
                 state = value;
-                if (state == GameState.Started)
+                switch (state)
                 {
-                    InTiming = true;
-                }
-                else if (state == GameState.Finished)
-                {
-                    InTiming = false;
-                    plane.Reveal();
+                    case GameState.Pendnig:
+                        InTiming = false;
+                        break;
+                    case GameState.Started:
+                        InTiming = true;
+                        break;
+                    default:
+                        InTiming = false;
+                        plane.Reveal();
+                        break;
                 }
             }
         }

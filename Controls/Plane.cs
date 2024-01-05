@@ -160,7 +160,7 @@ namespace MineSweeper.Controls
                     }
                     break;
                 case MouseButtons.Left:
-                    if (!Game.Started) generateMine();
+                    if (Game.State == GameState.Pendnig) generateMine();
                     if (floodFill(activeGrid)) Game.Lose();
                     break;
                 case MouseButtons.Right:
@@ -222,7 +222,7 @@ namespace MineSweeper.Controls
             {
                 gridMatrix[index].Type = map[index] == 0 ? (GridType)map.Neighbour(index).Sum() : GridType.Mine;
             }
-            Game.Started = Game.InTiming = true;
+            Game.State = GameState.Started;
         }
         #endregion
 
