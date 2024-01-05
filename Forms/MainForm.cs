@@ -7,7 +7,7 @@ using Resources = MineSweeper.Properties.Resources;
 
 namespace MineSweeper.Forms
 {
-    internal partial class MainForm : Form, IData
+    internal partial class MainForm : Form
     {
         #region 字段
         private GameSetting setting;
@@ -20,19 +20,14 @@ namespace MineSweeper.Forms
         #endregion
 
         #region 方法
-        private void loadGame()
-        {
-            Size = (game as Control).Size + new Size(100, 100);
-            game.Location = new(40, 50);
-            Controls.Add(game);
-        }
-
         private void mainFormLoad(object sender, EventArgs e)
         {
             if (File.Exists(Resources.archive))
             {
                 using Reader reader = new();
-                reader.Read(this);
+                reader.Read(ref setting);
+                reader.Read(game = new(setting));
+                reader.Read(rankings);
                 loadGame();
             }
             else
@@ -44,44 +39,19 @@ namespace MineSweeper.Forms
 
         public void NewGame()
         {
-            game?.Dispose();
-            game = new(setting);
-            loadGame();
-        }
-
-        public void 新游戏ToolStripMenuItemClick(object sender, EventArgs e) => NewGame();
-
-        private void 退出ToolStripMenuItemClick(object sender, EventArgs e) => Close();
-
-        private void 查看帮助ToolStripMenuItemClick(object sender, EventArgs e) =>
-            Process.Start("explorer.exe", Resources.helpPage);
-
-        private void 关于AToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            using AboutDialog about = new();
-            about.ShowDialog();
-        }
-
-        private void 统计信息ToolStripMenuItemClick(object sender, EventArgs e)
-        {
-            using (StatisticsDialog statisticsDialog = new(rankings))
+            if (game == null || game.State != GameState.Started || MessageBox.Show("游戏正在进行中，要开始新游戏吗？", "扫雷", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
             {
-                statisticsDialog.ShowDialog();
+                game?.Dispose();
+                game = new(setting);
+                loadGame();
             }
         }
 
-        private void 选项OToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loadGame()
         {
-            using OptionDialog optionDialog = new(setting);
-            if (optionDialog.ShowDialog() == DialogResult.OK)
-            {
-                if (game.State != GameState.Started || MessageBox.Show("游戏正在进行中，确定改变设置并开始新游戏吗？", "扫雷",
-                    MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
-                {
-                    setting = optionDialog.Setting;
-                    NewGame();
-                }
-            }
+            Size = (game as Control).Size + new Size(100, 100);
+            game.Location = new(40, 50);
+            Controls.Add(game);
         }
 
         public void Win()
@@ -90,8 +60,7 @@ namespace MineSweeper.Forms
             {
                 bgm.Play();
             }
-            using ResultDialog resultDialog = new(setting.Level == GameLevel.PlayerDefined ?
-                ResultDialogMode.Win : ResultDialogMode.Record, game.Time);
+            using ResultDialog resultDialog = new(setting.Level == GameLevel.PlayerDefined ? ResultDialogMode.Win : ResultDialogMode.Record, game.Time);
             resultDialog.ShowDialog();
             if (setting.Level == GameLevel.PlayerDefined)
             {
@@ -121,32 +90,49 @@ namespace MineSweeper.Forms
 
         private void mainFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (game.State != GameState.Started || MessageBox.Show("游戏正在进行，要保存并退出吗？", "扫雷",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+            if (game.State != GameState.Started || MessageBox.Show("游戏正在进行，要保存并退出吗？", "扫雷", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
             {
                 using Writer writer = new();
-                writer.Write(this);
+                writer.Write(setting);
+                writer.Write(game);
+                writer.Write(rankings);
             }
             else
             {
                 e.Cancel = true;
             }
         }
-        #endregion
 
-        #region 接口实现
-        void IReadable.ReadFrom(Reader reader)
+        public void 新游戏ToolStripMenuItemClick(object sender, EventArgs e) => NewGame();
+
+        private void 统计信息ToolStripMenuItemClick(object sender, EventArgs e)
         {
-            reader.Read(ref setting);
-            reader.Read(game = new(setting));
-            reader.Read(rankings);
+            using StatisticsDialog statisticsDialog = new(rankings);
+            statisticsDialog.ShowDialog();
         }
 
-        void IWritable.WriteTo(Writer writer)
+        private void 选项OToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            writer.Write(setting);
-            writer.Write(game);
-            writer.Write(rankings);
+            using OptionDialog optionDialog = new(setting);
+            if (optionDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (game.State != GameState.Started || MessageBox.Show("游戏正在进行中，要改变设置并开始新游戏吗？", "扫雷", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+                {
+                    game.State = GameState.Finished;
+                    setting = optionDialog.Setting;
+                    NewGame();
+                }
+            }
+        }
+
+        private void 退出ToolStripMenuItemClick(object sender, EventArgs e) => Close();
+
+        private void 查看帮助ToolStripMenuItemClick(object sender, EventArgs e) => Process.Start("explorer.exe", Resources.helpPage);
+
+        private void 关于AToolStripMenuItemClick(object sender, EventArgs e)
+        {
+            using AboutDialog aboutDialog = new();
+            aboutDialog.ShowDialog();
         }
         #endregion
     }

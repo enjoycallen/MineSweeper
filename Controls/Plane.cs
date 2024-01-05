@@ -1,6 +1,4 @@
 ﻿using MineSweeper.DataStructure;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
 
 namespace MineSweeper.Controls
 {
@@ -16,14 +14,7 @@ namespace MineSweeper.Controls
         #endregion
 
         #region 属性
-        public new MatrixSize Size { get => size; }
 
-        public int Row => size.Row;
-
-        public int Column => size.Column;
-
-        public int MineCount { get => mineCount; }
-        
         private Grid ActiveGrid
         {
             get => activeGrid;
@@ -92,6 +83,14 @@ namespace MineSweeper.Controls
             }
         }
 
+        public new MatrixSize Size { get => size; }
+
+        public int Row => size.Row;
+
+        public int Column => size.Column;
+
+        public int MineCount { get => mineCount; }
+
         public Game Game => Parent as Game;
         #endregion
 
@@ -106,6 +105,14 @@ namespace MineSweeper.Controls
         #endregion
 
         #region 方法
+        public void Reveal()
+        {
+            foreach (var grid in gridMatrix)
+            {
+                grid.Reveal();
+            }
+        }
+
         private void initializeComponent()
         {
             SuspendLayout();
@@ -171,35 +178,6 @@ namespace MineSweeper.Controls
             MouseState ^= e.Button;
         }
 
-        public void Reveal()
-        {
-            foreach (var grid in gridMatrix)
-            {
-                grid.Reveal();
-            }
-        }
-
-        private bool floodFill(Grid grid)
-        {
-            if (!grid.Explorable) return false;
-            if (grid.Explore()) return true;
-            if (grid.Type != GridType.Zero) return false;
-            foreach (var neighbour in gridMatrix.Neighbour(grid.Index))
-            {
-                if (neighbour.Explorable && floodFill(neighbour)) return true;
-            }
-            return false;
-        }
-
-        private bool cleared()
-        {
-            foreach (var grid in gridMatrix)
-            {
-                if (grid.Type != GridType.Mine && grid.Mode != GridMode.Explored) return false;
-            }
-            return true;
-        }
-
         private void generateMine()
         {
             List<Grid> blank = new(gridMatrix.NeighbourWithin(activeGrid.Index));
@@ -223,6 +201,27 @@ namespace MineSweeper.Controls
                 gridMatrix[index].Type = map[index] == 0 ? (GridType)map.Neighbour(index).Sum() : GridType.Mine;
             }
             Game.State = GameState.Started;
+        }
+
+        private bool floodFill(Grid grid)
+        {
+            if (!grid.Explorable) return false;
+            if (grid.Explore()) return true;
+            if (grid.Type != GridType.Zero) return false;
+            foreach (var neighbour in gridMatrix.Neighbour(grid.Index))
+            {
+                if (neighbour.Explorable && floodFill(neighbour)) return true;
+            }
+            return false;
+        }
+
+        private bool cleared()
+        {
+            foreach (var grid in gridMatrix)
+            {
+                if (grid.Type != GridType.Mine && grid.Mode != GridMode.Explored) return false;
+            }
+            return true;
         }
         #endregion
 
