@@ -1,6 +1,5 @@
 ﻿using MineSweeper.Controls;
 using MineSweeper.DataStructure;
-using MineSweeper.Dialogs;
 using System.Diagnostics;
 using System.Media;
 using Resources = MineSweeper.Properties.Resources;
