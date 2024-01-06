@@ -61,7 +61,7 @@ namespace MineSweeper.Forms
             }
             using ResultDialog resultDialog = new(setting.Level == GameLevel.PlayerDefined ? ResultDialogMode.Win : ResultDialogMode.Record, game.Time);
             resultDialog.ShowDialog();
-            if (setting.Level == GameLevel.PlayerDefined)
+            if (setting.Level != GameLevel.PlayerDefined)
             {
                 rankings.Add(setting.Level, resultDialog.Record);
             }
