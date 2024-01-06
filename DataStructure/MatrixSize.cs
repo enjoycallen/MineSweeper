@@ -4,8 +4,10 @@ namespace MineSweeper.DataStructure
 {
     internal struct MatrixSize : IEnumerable<MatrixIndex>, IData
     {
+        #region 字段
         private int row;
         private int column;
+        #endregion
 
         #region 属性
         public int Row { get => row; set => row = value; }

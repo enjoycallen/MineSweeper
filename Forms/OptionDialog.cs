@@ -12,6 +12,7 @@ namespace MineSweeper.Forms
         public GameSetting Setting => setting;
         #endregion
 
+        #region 构造函数
         public OptionDialog(GameSetting setting)
         {
             InitializeComponent();
@@ -36,7 +37,9 @@ namespace MineSweeper.Forms
                 mineCountTextBox.Text = setting.MineCount.ToString();
             }
         }
+        #endregion
 
+        #region 方法
         private void playerDefinedRadioButtonCheckedChanged(object sender, EventArgs e) =>
             heightTextBox.Enabled = widthTextBox.Enabled = mineCountTextBox.Enabled = playerDefinedRadioButton.Checked;
 
@@ -97,5 +100,6 @@ namespace MineSweeper.Forms
                 }
             }
         }
+        #endregion
     }
 }

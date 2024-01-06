@@ -5,8 +5,10 @@ namespace MineSweeper.DataStructure
 {
     static internal class GridImage
     {
+        #region 字段
         private static Dictionary<GridType, dynamic> explored;
         private static Dictionary<GridState, dynamic> concealed, marked, undetermined;
+        #endregion
 
         static GridImage()
         {

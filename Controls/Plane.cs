@@ -14,7 +14,6 @@ namespace MineSweeper.Controls
         #endregion
 
         #region 属性
-
         private Grid ActiveGrid
         {
             get => activeGrid;

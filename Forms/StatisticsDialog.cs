@@ -4,14 +4,19 @@ namespace MineSweeper.Forms
 {
     internal partial class StatisticsDialog : Form
     {
+        #region 字段
         public Rankings rankings;
+        #endregion
 
+        #region 构造函数
         public StatisticsDialog(Rankings rankings)
         {
             InitializeComponent();
             this.rankings = rankings;
         }
+        #endregion
 
+        #region 方法
         private void levelListBoxSelectedIndexChanged(object sender, EventArgs e)
         {
             switch (levelListBox.SelectedIndex)
@@ -52,9 +57,7 @@ namespace MineSweeper.Forms
             }
         }
 
-        private void exitButtonClick(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void exitButtonClick(object sender, EventArgs e) => Close();
+        #endregion
     }
 }
