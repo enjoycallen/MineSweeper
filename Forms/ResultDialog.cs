@@ -18,9 +18,10 @@ namespace MineSweeper.Forms
             InitializeComponent();
             record.Time = time;
             record.Date = DateTime.Now;
-            (mode == ResultDialogMode.Lose ? loseCaptionLabel : winCaptionLabel).Visible = true;
             timeLabel.Text = time + " 秒";
             dateLabel.Text = record.Date.ToString();
+            Text = mode == ResultDialogMode.Lose ? "游戏失败" : "游戏胜利";
+            (mode == ResultDialogMode.Lose ? loseCaptionLabel : winCaptionLabel).Visible = true;
             playerNameCaptionLabel.Visible = playerNameTextBox.Visible = mode == ResultDialogMode.Record;
         }
         #endregion
